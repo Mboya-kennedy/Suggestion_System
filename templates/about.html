@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% load static %}
+
+	<title>{% block title%} About Page{% endblock %}</title>
+
+	{% block css_file %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+			 <h3 class="img"><img src="{% static 'images/TUM.jpg' %}" width="400px" height="300px"></h3>
+
+	 
+
+    {%endblock %}

@@ -1,0 +1,36 @@
+{% extends 'main.html'%}
+
+{% block content%}
+
+<form method="POST">
+	{% csrf_token %}
+
+	{% if error %}
+
+      <p style="color: red">{{error}}</p>
+
+	{% endif %}
+ <h1 class="head"><center ><h1>Login Page</h1> </center></h1>
+	
+
+
+	
+
+<h2 class="log"> 
+	<center>
+
+	<label> User Name</label>
+		<input type="text" name="text" placeholder="First Name"> <br>
+
+	<label>Password</label>
+		<input type="password" name="password" placeholder="Password">
+		<br>
+	
+		<button type="submit">Login</button>
+</center>
+</h2>
+</form>
+
+
+{% endblock content %}
+

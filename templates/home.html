@@ -1,0 +1,98 @@
+{% extends 'main.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title%} Students Suggestion System {% endblock %}</title>
+
+	{% block css_file %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    {%endblock %}
+</head>
+<body>
+
+
+{% block content %}
+
+  <header class="main-h">
+  	<a class="log" href="login">Login</a>
+
+  	<form method="GET" action="{% url 'home' %}">
+	 <input type="text" name="q" placeholder="Search A Topic to Suggest"> 
+	 <button type="submit">Submit</button>
+    </form>
+
+	<!--  <center><h3><a href="about"> <img src="{% static 'images/logo.jpg' %}" width="150px" height="120px"></a></h3>
+
+	 </center> -->
+
+	<h2 >
+		
+		<center><a href="" class="h-1"> STUDENTS SUGGESTION SYSTEM </a>
+		</center>
+        
+	</h2>
+
+	  <center><a class="tum" href="ici"><img src="{%  static 'images/ICI.jpg' %}" width="480px" height="273px"></a>
+
+
+	  </center>
+
+	    
+  <header class="dv">
+
+  	<div>
+  		<h3>Browse Topics</h3>
+
+  		<div>
+  		  	
+  		  	<a href="{% url 'home' %}?q={{topic.name}}">All</a>
+  		  </div>
+
+  		{% for topic in topics %}
+  		  <div>
+  		  	
+  		  	<a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+  		  </div>
+  		{% endfor %}
+  		
+  	</div>
+
+  	<DIV>
+  			 <div>
+	  	 <a class="sug" href="{% url 'create-suggestion'  %} ">Create A Suggestion</a>
+	  	 <br>
+	  	 <br>
+	  	 
+	<div >
+		{% for suggestion in suggestions %}
+    	<div class="dv-2">
+    		<span class="usr">@{{suggestion.host.username}}</span>
+             <h4><a href="{% url 'suggestion' suggestion.id %}">{{suggestion.name}}</a></h4>
+			   <small class="tp">Department : {{suggestion.topic.name}}</small><br>
+			   <br>
+
+
+			   <a href="{% url 'update-suggestion' suggestion.id %}">Edit</a>
+		  		<a href="{% url 'delete-suggestion' suggestion.id %}">Delete</a>
+		  		<br>
+		  		<hr>
+    		   
+			  <!--  <hr> -->
+		</div>
+
+	{% endfor %}
+	</div>
+</div>	
+
+  </header>
+  	</DIV>
+  	
+  
+	 
+</header>
+{% endblock content%}
+</body>
+</html>
